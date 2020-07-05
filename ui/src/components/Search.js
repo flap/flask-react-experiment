@@ -6,52 +6,44 @@ import AnimatedModal from './AnimatedModal.js'
 class Search extends Component {
 
     state = {
-        searchValue: '',
-        apiResult: []
+        searchedValue: '',
+        answer: null,
+        modalShow: false
     };
 
     handleOnChange = event => {
-        this.setState({ searchValue: event.target.value });
+        this.setState({ searchedValue: event.target.value });
     };
 
-    handleSearch = () => {
-        var ans = [{
-            "idCardNumber": 1.0, 
-            "cpfNumber": 12345, 
-            "name": "Chocolate and sweets"
-        }]
-        this.setState({ apiResult: ans });
-    }
-
-    // componentDidMount() {
-    //     var searchUrl = `http://127.0.0.1:5000/`;
-    //     fetch(searchUrl)
-    //     .then(response => {
-    //         return response.json();
-    //     })
-    //     .then(jsonData => {
-    //         this.setState({ apiResult: jsonData });
-    //     });
-    // };
+    fetchAnswer = () => {
+        var searchUrl = `https://api.exchangeratesapi.io/2010-01-12`;
+        fetch(searchUrl)
+        .then(response => {
+            return response.json();
+        })
+        .then(jsonData => {
+            console.log(jsonData.rates)
+            this.setState({ answer: jsonData.base})
+            console.log(this.state.answer)
+            this.setState({ modalShow: true })
+        });
+    };
 
     render() {
         return (
             <div>
                 <TextField
                     onChange={event => this.handleOnChange(event)}
-                    value={this.state.searchValue}
+                    value={this.state.searchedValue}
                 />
-                <IconButton onClick={this.handleSearch}>
+                <IconButton onClick={this.fetchAnswer}>
                     <SearchIcon/>
                 </IconButton>
-                {this.state.apiResult.map((apiResult, index) => (
-                    <div key={index}>
-                        <h1 key={apiResult.idCardNumber.toString()}>{apiResult.idCardNumber}</h1>
-                        <h1 key={apiResult.cpfNumber.toString()}>{apiResult.cpfNumber}</h1>
-                        <h1 key={apiResult.name}>{apiResult.name}</h1>
-                        <AnimatedModal/>
-                    </div>
-                ))}
+                <AnimatedModal 
+                    open={this.state.modalShow}
+                    onClose={() => this.setState({ modalShow: false })}
+                    content={this.state.answer}
+                />
             </div>
         )
     }
