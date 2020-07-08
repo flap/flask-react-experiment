@@ -1,12 +1,14 @@
 Functional requirements
 
 Essentials:
+
 Keep track of whose turn it is.
 Register the list of participants.
 The participant's list should be treated as a circular queue
 End turn and display who is the next participant.
 
 Desirable:
+
 Display the queue in the current status
 Clear the participants' list
 Keep a history of the participants lists
