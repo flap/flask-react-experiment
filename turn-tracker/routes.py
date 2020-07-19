@@ -8,7 +8,7 @@ def circular_list():
     if request.method == 'POST':
         players = []
         [players.append(player) for player in request.json]
-        return jsonify(players)
+        return jsonify(players), 201
     else:
         # You probably don't have args at this route with GET
         # method, but if you do, you can access them like so:
