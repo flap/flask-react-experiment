@@ -5,13 +5,16 @@ app = Flask(__name__)
 players = []
 
 
-@app.route('/circular', methods=['GET', 'POST'])
+@app.route('/circular', methods=['GET', 'POST', 'DELETE'])
 def circular_list():
     if request.method == 'POST':
         [players.append(player) for player in request.json]
         return jsonify(players), 201
-    else:
+    elif request.method == 'GET':
         return jsonify(players)
+    else:
+        players.clear()
+        return jsonify(players), 204
 
 
 @app.route('/circular/next')
