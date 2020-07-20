@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request
-from collections import deque
 
 app = Flask(__name__)
 
@@ -12,11 +11,7 @@ def circular_list():
         [players.append(player) for player in request.json]
         return jsonify(players), 201
     else:
-        # You probably don't have args at this route with GET
-        # method, but if you do, you can access them like so:
-        # yourarg = flask.request.args.get('argname')
-        # your_register_template_rendering(yourarg)
-        return jsonify('Hello, World!')
+        return jsonify(players)
 
 
 @app.route('/circular/next')
