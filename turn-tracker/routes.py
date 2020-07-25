@@ -8,6 +8,7 @@ players = []
 @app.route('/circular', methods=['GET', 'POST', 'DELETE'])
 def circular_list():
     if request.method == 'POST':
+        players.clear()
         [players.append(player) for player in request.json]
         return jsonify(players), 201
     elif request.method == 'GET':
