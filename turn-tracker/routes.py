@@ -5,7 +5,7 @@ app = Flask(__name__)
 players = []
 
 
-@app.route('/circular', methods=['GET', 'POST', 'DELETE'])
+@app.route('/players', methods=['GET', 'POST', 'DELETE'])
 def circular_list():
     if request.method == 'POST':
         players.clear()
@@ -18,7 +18,7 @@ def circular_list():
         return jsonify(players), 204
 
 
-@app.route('/circular/next')
+@app.route('/players/next')
 def next_player():
     player = players.pop(0)
     players.append(player)
