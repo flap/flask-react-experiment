@@ -17,22 +17,12 @@ Allow list shuffling
 Non functional requirenments
 
 Create an app in python + flask to listen for requests. 
-Create POST method on `/circular` to allow participant's list creation with their names.
+Create POST method on `/players` to allow participant's list creation with their names.
 After the player takes his/her turn, he/she should be sent to the end of the queue. The next player to be shown is the next on the list.
-Create GET method on `/circular/next` to end turn and display the name of the next player.
-Create GET method on `/circular` to display the current status of the circular list.
-Create DELETE method on `circular` to delete the current players list.
+Create GET method on `/players/next` to end turn and display the name of the next player.
+Create GET method on `/players` to display the current status of the circular list.
+Create DELETE method on `/players` to delete the current players list.
 
-
-Expected endpoints:
-
-POST /circular          <---> players names from json
-
-GET  /circular/next     <---> next player on the players list
-
-GET  /circular          <---> players list's current state 
-
-DELETE  /circular     <---> delete the players list
 
 
 
