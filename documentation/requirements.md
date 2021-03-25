@@ -14,6 +14,12 @@ The Board Game Association needs a new system to keep track of whose turn it is 
 - It wants to reverse the players order.
 - It wants to keep the record of the session players order.
 
+### Use cases
+
+Main user case diagram
+
+![main-user-case](use_case.png)
+
 ## Non functional requirenments
 
 Create an app in python to listen for requests. 
