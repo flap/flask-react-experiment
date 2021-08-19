@@ -22,12 +22,12 @@ Main user case diagram
 
 ## Non functional requirenments
 
-Create an app in python to listen for requests. 
-Create POST method on `/players` to allow participant's list creation with their names.
-After the player takes his/her turn, he/she should be sent to the end of the queue. The next player to be shown is the next on the list.
-Create GET method on `/players/next` to end turn and display the name of the next player.
-Create GET method on `/players` to display the current status of the circular list.
-Create DELETE method on `/players` to delete the current players list.
+Create an app in python to listen for requests.   
+Create POST method on `/players` to allow participant's list creation with their names.  
+After the player takes his/her turn, he/she should be sent to the end of the queue. The next player to be shown is the next on the list.  
+Create GET method on `/players/next` to end turn and display the name of the next player.  
+Create GET method on `/players` to display the current status of the circular list.  
+Create DELETE method on `/players` to delete the current players list.  
 
 
 
