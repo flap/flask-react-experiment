@@ -41,3 +41,9 @@ Ref.: https://restfulapi.net/resource-naming/
 - [UML Class Diagrams Reference](https://www.uml-diagrams.org/class-reference.html)
 - [What is the difference between association, aggregation and composition?](https://stackoverflow.com/a/34069760)
 - [Aggregation vs. Composition in Object Oriented Programming](https://medium.com/swlh/aggregation-vs-composition-in-object-oriented-programming-3fa4fd471a9f)
+
+## USE CASE DIAGRAMS
+
+## PYLINT
+
+## PRECOMMIT
