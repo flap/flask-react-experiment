@@ -39,6 +39,13 @@ class GameSession:
         return session
 
     def start(self, name):
+        """
+        Start the board game session.
+        It assumes that all players added previously will not be changed during the game.
+        It defines who is first player in the turn.
+        :return the first player (current player)
+        """
+
         session = self._find_session(name)
         if not session.players:
             raise Exception
@@ -49,6 +56,12 @@ class GameSession:
         return session.turn.current_player()
 
     def finish(self, name):
+        """
+        Finish the board game session.
+        It saves the session current status.
+        :return the session current status
+        """
+
         session = self._find_session(name)
         if not session.started:
             raise Exception
