@@ -22,7 +22,7 @@ class GameSession:
 
     def __eq__(self, other):
         if isinstance(other, GameSession):
-            return self.name == other.name and self.players == other.players \
+            return self.name == other.name and self.players == other.players and self.turn == other.turn \
                    and self.started == other.started and self.finished == other.finished
         return False
 
@@ -42,9 +42,11 @@ class GameSession:
         session = self._find_session(name)
         if not session.players:
             raise Exception
+        # start first turn
+        session.turn = Turn(session.players)
         session.started = True
         session_repository.update(session)
-        return session
+        return session.turn.current_player()
 
     def finish(self, name):
         session = self._find_session(name)
@@ -53,6 +55,24 @@ class GameSession:
         session.finished = True
         session_repository.update(session)
         return session
+
+    def current_player(self, name):
+        session = self._find_session(name)
+        if not session.started or session.finished:
+            raise Exception
+        return session.turn.current_player()
+
+    def end_turn(self, name):
+        session = self._find_session(name)
+        if not session.started or session.finished:
+            raise Exception
+        return session.turn.end_turn()
+
+    def skip_turn(self, name):
+        session = self._find_session(name)
+        if not session.started or session.finished:
+            raise Exception
+        session.turn.skip()
 
     @staticmethod
     def _find_session(name):
