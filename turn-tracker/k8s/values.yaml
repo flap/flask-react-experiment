@@ -1,0 +1,14 @@
+replicaCount: 2
+port: 5000
+
+loglevel: INFO
+  
+image:
+  tag: v1
+  name: docker.io/p1m3nta/turn-tracker
+  imagePullPolicy: Always
+
+ingressPort: 80
+servicePort: 5000
+
+
